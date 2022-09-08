@@ -1,0 +1,23 @@
+@include media-breakpoint-down(xl) {
+	.loginCard {
+		width: 90%;
+		margin: auto;
+	}
+	@include media-breakpoint-up(md) {
+		.loginCard {
+			width: 77%;
+			margin: auto;
+		}
+	}
+}
+
+.infoCard {
+	width: 100%;
+
+	@include media-breakpoint-up(md) {
+		max-width: 250px;
+	}
+	@include media-breakpoint-up(lg) {
+		max-width: 340px;
+	}
+}

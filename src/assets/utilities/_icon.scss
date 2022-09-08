@@ -1,0 +1,19 @@
+.third-logo {
+	width: 40px;
+	height: 40px;
+}
+
+.third-relative {
+	left: 36px;
+	position: relative;
+}
+
+.post-edit {
+	color: #c6c6c6;
+	background-color: #f4f4f4;
+	padding: 0 4px;
+	&:hover {
+		color: #b5b5b5;
+		background-color: #eeeeee;
+	}
+}

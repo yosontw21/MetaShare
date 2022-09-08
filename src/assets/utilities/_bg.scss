@@ -1,0 +1,83 @@
+.bg-cover {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.logo-lg {
+	background-image: url("https://raw.githubusercontent.com/yosontw21/MetaShare-Frontend/master/src/assets/images/1c9b3870.png");
+	height: 54px;
+	width: 270px;
+	display: block;
+}
+
+.logo {
+	background-image: url("https://raw.githubusercontent.com/yosontw21/MetaShare-Frontend/master/src/assets/images/1c9b3870.png");
+	width: 162px;
+	height: 2rem;
+	display: block;
+}
+
+.avatar {
+	width: 56px;
+	height: 56px;
+	@include media-breakpoint-down(sm) {
+		width: 40px;
+		height: 40px;
+	}
+}
+
+@include media-breakpoint-down(md) {
+	.avatar-md {
+		width: 48px !important;
+		height: 48px !important;
+	}
+}
+
+.banner {
+	background-image: url("/src/assets/images/banner.svg");
+	width: 80%;
+}
+
+@include media-breakpoint-down(xl) {
+	.banner {
+		width: 50%;
+	}
+}
+
+.bg-primary-100 {
+	background-color: #f7f4ff;
+}
+
+.w-95 {
+	width: 95%;
+}
+
+.navbar-footer {
+	width: 360px;
+}
+
+.bg-light {
+	position: absolute;
+	overflow-y: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.sidebarFix {
+	position: sticky;
+	height: 100%;
+	top: 96px;
+}
+
+.shadow-footer {
+	box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@include media-breakpoint-down(md) {
+	.w-md-50 {
+		width: 50%;
+	}
+}

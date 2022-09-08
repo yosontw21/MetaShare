@@ -1,0 +1,319 @@
+<template>
+	<div
+		class="
+			bg-white
+			d-flex
+			justify-content-center
+			align-items-center
+			py-6
+			shadow-lg
+			rounded-2
+		"
+		v-if="personPosts.length <= 0"
+	>
+		<div class="" v-show="personProfile._id === profile._id">
+			<span class="fs-2xs me-3" style="color: #a5a5a5"
+				>沒有相關貼文，快去新增一則貼文吧！</span
+			>
+			<button type="button" class="btn btn-primary" @click="openPostModal">
+				新增貼文
+			</button>
+		</div>
+		<div class="" v-show="personProfile._id !== profile._id">
+			<span class="fs-2xs me-3" style="color: #a5a5a5">沒有相關貼文喔</span>
+		</div>
+	</div>
+	<div class="w-100 mb-6" v-else v-for="item in personPosts" :key="item._id">
+		<Loading :active="isLoading"></Loading>
+		<div class="w-100 py-3 px-6 rounded-2 shadow-lg bg-white mb-6">
+			<div class="border-bottom pb-3 mb-2">
+				<div class="d-flex align-items-center justify-content-between">
+					<div class="d-flex align-items-center">
+						<div class="me-3" style="width: 56px; height: 56px">
+							<div class="rounded-circle">
+								<img :src="item.user.avatar" alt="" class="rounded-circle" />
+							</div>
+						</div>
+						<div class="">
+							<router-link :to="`/profile/${item.user._id}`">{{
+								item.user.name
+							}}</router-link>
+							<p>{{ day(item.createdAt) }}</p>
+						</div>
+					</div>
+					<div class="dropdown" v-show="profile._id === item.user._id">
+						<a
+							class="post-edit rounded-2"
+							href="#"
+							role="button"
+							id="item.id"
+							data-bs-toggle="dropdown"
+							aria-expanded="false"
+						>
+							<span class="material-icons"> more_horiz </span>
+						</a>
+
+						<ul class="dropdown-menu" aria-labelledby="item.id">
+							<li>
+								<button
+									type="button"
+									class="dropdown-item"
+									@click="openPostModal(false, item)"
+								>
+									編輯
+								</button>
+							</li>
+
+							<li><a class="dropdown-item" href="#">刪除</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="border-bottom pb-3 mb-2">
+				<p>{{ item.content }}</p>
+			</div>
+
+			<div class="border-bottom pb-2 mb-3 d-flex">
+				<div class="me-3">
+					<div class="">
+						<button
+							type="button"
+							class="border-0 bg-white d-flex"
+							@click="likesPost(item)"
+						>
+							<div
+								class="fs-xs"
+								v-if="item.likes.length === 0"
+								style="color: #b9b9b9"
+							>
+								<span class="material-icons fs-lg me-2"> favorite_border </span>
+								<span class="text-nowrap">成為第一個喜歡的朋友</span>
+							</div>
+							<div class="fs-xs" v-else>
+								<span class="material-icons fs-lg me-2" style="color: #de5d4b">
+									favorite
+								</span>
+								<span>{{ item.likes.length }}個人喜歡</span>
+							</div>
+						</button>
+					</div>
+				</div>
+				<div class="d-flex align-items-center">
+					<button type="button" class="border-0 bg-white d-flex">
+						<div
+							v-if="item.comments.length === 0"
+							class="fs-xs"
+							style="color: #b9b9b9"
+						>
+							<span class="material-icons fs-lg me-2">
+								chat_bubble_outline
+							</span>
+							<span class="text-nowrap">尚無留言</span>
+						</div>
+
+						<div v-else class="fs-xs">
+							<span class="material-icons fs-lg me-2 text-primary">
+								comment
+							</span>
+							<span>{{ item.comments.length }}個人留言</span>
+						</div>
+					</button>
+				</div>
+			</div>
+			<div
+				class="border-bottom pb-3 mb-3"
+				v-for="commentsItem in item.comments"
+				:key="commentsItem._id"
+			>
+				<div class="d-flex">
+					<div class="rounded-circle me-3" style="width: 36px; height: 36px">
+						<img
+							:src="commentsItem.userId.avatar"
+							alt=""
+							class="rounded-circle"
+						/>
+					</div>
+					<div class="py-2 px-3 rounded-3" style="background-color: #f4f4f4">
+						<div class="d-flex">
+							<router-link
+								:to="`/profile/${commentsItem.userId._id}`"
+								class="me-3"
+								>{{ commentsItem.userId.name }}</router-link
+							>
+							<p class="text-black-50 fs-xs">
+								{{ day(commentsItem.createdAt) }}
+							</p>
+						</div>
+						<p>{{ commentsItem.comment }}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="d-flex align-items-center w-100">
+				<div class="me-3">
+					<div class="rounded-circle" style="height: 40px; width: 40px">
+						<img :src="profile.avatar" alt="" class="rounded-circle" />
+					</div>
+				</div>
+				<div
+					class="
+						comments-box
+						d-flex
+						justify-content-between
+						rounded-pill
+						border border-light
+						w-100
+					"
+				>
+					<input
+						type="text"
+						placeholder="留言....."
+						class="search-input border border-0 w-100"
+						@input="comments.comment = $event.target.value"
+						@keydown.enter="createComment(item.id)"
+						ref="commentValue"
+					/>
+					<button
+						@click="createComment(item.id)"
+						type="button"
+						class="
+							text-nowrap
+							rounded-pill
+							border-0
+							search-button
+							fs-md
+							py-lg-1
+							px-lg-10 px-2
+							py-0
+							fw-bold
+						"
+					>
+						留言
+						<div
+							class="spinner-border spinner-border-sm mt-1 ms-2"
+							v-if="this.status.loadingItem === item.id"
+							role="status"
+						>
+							<span class="visually-hidden">Loading...</span>
+						</div>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<createPostModal
+		ref="createPostModal"
+		:post="tempPost"
+		@create-post="createPost"
+	></createPostModal>
+</template>
+
+
+
+<script>
+	import { day, dayToNow } from "../utils/day";
+	import profileMixin from "../mixins/profileMixin";
+	import createPostModal from "../components/CreatePostModal.vue";
+	import personPostsMixin from "../mixins/personPostsMixin";
+	import createPostMixin from "../mixins/createPostMixin";
+	import otherProfileMixin from "../mixins/otherProfileMixin";
+	import openModalMixin from "../mixins/openModalMixin";
+
+	export default {
+		data() {
+			return {
+				comments: {},
+				profile: [],
+
+				dayToNow,
+				day,
+				isLoading: false,
+				status: {
+					loadingItem: "",
+				},
+			};
+		},
+		components: {
+			createPostModal,
+		},
+		mixins: [
+			profileMixin,
+			personPostsMixin,
+			createPostMixin,
+			otherProfileMixin,
+			openModalMixin,
+		],
+		methods: {
+			createComment(id) {
+				const token = document.cookie.split(`jwt=`).pop();
+				this.status.loadingItem = id;
+				this.$http({
+					method: "POST",
+					url: `${process.env.VUE_APP_API}/post/${id}/comments`,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					data: this.comments,
+				})
+					.then((res) => {
+						console.log(res);
+
+						this.$refs.commentValue.forEach((item) => {
+							if (res.data.status === "success") {
+								item.value == "";
+							}
+						});
+
+						this.status.loadingItem = "";
+						this.getPersonPosts();
+					})
+					.catch((err) => {
+						this.isLoading = false;
+						console.log(err);
+						if (err.response.data.status === "Error") {
+							alert("請輸入留言內容");
+							this.status.loadingItem = false;
+						}
+					});
+			},
+			likesPost(item) {
+				const isLike = item.likes.find((item) => item._id === this.profile._id);
+				if (isLike) {
+					this.delLikesPost(item);
+					return;
+				}
+				const token = document.cookie.split(`jwt=`).pop();
+				this.$http({
+					method: "POST",
+					url: `${process.env.VUE_APP_API}/post/${item._id}/likes`,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+					.then((res) => {
+						this.getPersonPosts();
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			},
+			delLikesPost(item) {
+				const token = document.cookie.split(`jwt=`).pop();
+				this.$http({
+					method: "DELETE",
+					url: `${process.env.VUE_APP_API}/post/${item._id}/likes`,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+					.then((res) => {
+						console.log(res);
+						this.getPersonPosts();
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			},
+		},
+	};
+</script>
