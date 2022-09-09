@@ -72,14 +72,14 @@
 							@click="likesPost(post)"
 						>
 							<div
-								class="fs-xs"
+								class="fs-xs text-nowrap"
 								v-if="post.likes.length === 0"
 								style="color: #b9b9b9"
 							>
 								<span class="material-icons fs-lg me-2"> favorite_border</span>
-								<span class="text-nowrap">成為第一個喜歡朋友</span>
+								<span class="">成為第一個喜歡朋友</span>
 							</div>
-							<div class="fs-xs" v-else>
+							<div class="fs-xs " v-else>
 								<span class="material-icons fs-lg me-2" style="color: #de5d4b">
 									favorite
 								</span>
@@ -93,7 +93,7 @@
 					<button type="button" class="border-0 bg-white d-flex">
 						<div
 							v-if="post.comments.length === 0"
-							class="fs-xs"
+							class="fs-xs text-nowrap"
 							style="color: #b9b9b9"
 						>
 							<span class="material-icons fs-lg me-2">
@@ -102,7 +102,7 @@
 							<span class="text-nowrap">尚無留言</span>
 						</div>
 
-						<div v-else class="fs-xs">
+						<div v-else class="fs-xs text-nowrap">
 							<span class="material-icons fs-lg me-2 text-primary">
 								comment
 							</span>
