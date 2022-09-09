@@ -63,33 +63,31 @@
 				<p>{{ post.content }}</p>
 			</div>
 
-			<div class="border-bottom pb-2 mb-3 d-flex">
-				<div class="me-3">
-					<div class="">
-						<button
-							type="button"
-							class="border-0 bg-white d-flex"
-							@click="likesPost(post)"
+			<div class="border-bottom pb-2 mb-3 d-flex align-items-center">
+				<div class="me-2">
+					<button
+						type="button"
+						class="border-0 bg-white d-flex"
+						@click="likesPost(post)"
+					>
+						<div
+							class="fs-xs text-nowrap"
+							v-if="post.likes.length === 0"
+							style="color: #b9b9b9"
 						>
-							<div
-								class="fs-xs text-nowrap"
-								v-if="post.likes.length === 0"
-								style="color: #b9b9b9"
-							>
-								<span class="material-icons fs-lg me-2"> favorite_border</span>
-								<span class="">成為第一個喜歡朋友</span>
-							</div>
-							<div class="fs-xs " v-else>
-								<span class="material-icons fs-lg me-2" style="color: #de5d4b">
-									favorite
-								</span>
-								<span>{{ post.likes.length }}個人喜歡</span>
-							</div>
-						</button>
-					</div>
+							<span class="material-icons fs-lg me-2"> favorite_border</span>
+							<span class="">成為第一個喜歡朋友</span>
+						</div>
+						<div class="fs-xs" v-else>
+							<span class="material-icons fs-lg me-2" style="color: #de5d4b">
+								favorite
+							</span>
+							<span>{{ post.likes.length }}個人喜歡</span>
+						</div>
+					</button>
 				</div>
 
-				<div class="d-flex align-items-center">
+				<div class="d-flex align-items-center justify-content-start">
 					<button type="button" class="border-0 bg-white d-flex">
 						<div
 							v-if="post.comments.length === 0"
