@@ -3,10 +3,7 @@
 		<div class="container pt-20 d-flex">
 			<ul class="rounded-2 shadow-lg w-100 bg-white p-2">
 				<li class="border-bottom py-1">
-					<router-link
-						:to="`/profile/${profile._id}`"
-						class="d-flex"
-					>
+					<router-link :to="`/profile/${profile._id}`" class="d-flex">
 						<div class="rounded-circle me-2">
 							<img
 								class="rounded-circle"
@@ -30,8 +27,11 @@
 						編輯個人資料</router-link
 					>
 				</li>
-				<li class="border-bottom py-3">
-					<a href="" class="fw-bold fs-xs d-block text-dark-800">
+				<li class="border-bottom py-3" style="cursor: pointer">
+					<a
+						@click.prevent="logOut"
+						class="fw-bold fs-xs d-block text-dark-800"
+					>
 						<span class="material-icons fs-lg ms-1 me-1"> logout </span>
 						登出</a
 					>
@@ -47,9 +47,23 @@
 	import profileMixin from "../mixins/profileMixin";
 
 	export default {
-
-
 		mixins: [profileMixin],
-
+		methods: {
+			logOut() {
+				this.$http({
+					method: "GET",
+					url: `${process.env.VUE_APP_API}/users/logout`,
+				})
+					.then((res) => {
+						if (res.data.status === "success") {
+							document.cookie = "jwt=";
+							this.$router.push("/login");
+						}
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			},
+		},
 	};
 </script>

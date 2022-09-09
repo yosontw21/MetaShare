@@ -1,6 +1,6 @@
 <template>
+	<Loading :active="isLoading"></Loading>
 	<div class="w-100 ms-md-9 ms-0 container">
-		<Loading :active="isLoading"></Loading>
 		<div class="w-100 py-3 px-4 rounded-2 shadow-lg bg-white mb-6">
 			<p class="text-primary fw-bold fs-lg mb-4">追蹤名單</p>
 			<div class="w-100 t-border d-block mb-5"></div>

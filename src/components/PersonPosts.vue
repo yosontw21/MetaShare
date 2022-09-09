@@ -71,8 +71,15 @@
 			</div>
 			<div class="border-bottom pb-3 mb-2">
 				<p>{{ item.content }}</p>
+				<div class="rounded-3 mt-3" style="max-height: 740px" v-if="item.image">
+					<img
+						:src="item.image"
+						class="w-100 h-100 rounded-3"
+						alt=""
+						style="max-height: 740px"
+					/>
+				</div>
 			</div>
-
 			<div class="border-bottom pb-2 mb-3 d-flex">
 				<div class="me-3">
 					<div class="">

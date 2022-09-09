@@ -5,7 +5,6 @@ export default {
 	mixins: [createPostMixin],
 	data() {
 		return {
-			isLoading: false,
 			isNew: false
 		};
 	},

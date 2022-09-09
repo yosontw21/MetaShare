@@ -1,6 +1,11 @@
 <template>
+	<Loading :active="isLoading"></Loading>
+	<createPostModal
+		ref="createPostModal"
+		:post="tempPost"
+		@create-post="createPost"
+	></createPostModal>
 	<div class="w-100 mb-6" v-for="(post, i) in posts" :key="post.id">
-		<Loading :active="isLoading"></Loading>
 		<div class="w-100 py-3 px-6 rounded-2 shadow-lg bg-white mb-6">
 			<div class="border-bottom pb-3 mb-2">
 				<div class="d-flex align-items-center justify-content-between">
@@ -61,6 +66,14 @@
 			</div>
 			<div class="border-bottom pb-3 mb-2">
 				<p>{{ post.content }}</p>
+				<div class="rounded-3 mt-3" style="max-height: 740px" v-if="post.image">
+					<img
+						:src="post.image"
+						class="w-100 h-100 rounded-3"
+						alt=""
+						style="max-height: 740px"
+					/>
+				</div>
 			</div>
 
 			<div class="border-bottom pb-2 mb-3 d-flex align-items-center">
@@ -164,13 +177,14 @@
 					/>
 					<button
 						@click="createComment(post.id)"
+						:disabled="this.status.loadingItem === post.id"
 						type="button"
 						class="
 							text-nowrap
 							rounded-pill
 							border-0
-							search-button
-							fs-md
+							btn btn-primary
+							fs-md fs-md-sm
 							py-lg-1
 							px-lg-10 px-2
 							py-0
@@ -190,11 +204,6 @@
 			</div>
 		</div>
 	</div>
-	<createPostModal
-		ref="createPostModal"
-		:post="tempPost"
-		@create-post="createPost"
-	></createPostModal>
 </template>
 
 
@@ -246,19 +255,15 @@
 					data: this.comments,
 				})
 					.then((res) => {
-						console.log(res);
-						this.isLoading = true;
 						this.$refs.commentValue.forEach((item) => {
 							if (res.data.status === "success") {
 								item.value = "";
 							}
 						});
-
 						this.status.loadingItem = "";
 						this.getPosts();
 					})
 					.catch((err) => {
-						this.isLoading = false;
 						console.log(err);
 						if (err.response.data.status === "Error") {
 							alert("請輸入留言內容");
@@ -298,7 +303,6 @@
 					},
 				})
 					.then((res) => {
-						console.log(res);
 						this.getPosts();
 					})
 					.catch((err) => {

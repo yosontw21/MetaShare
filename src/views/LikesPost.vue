@@ -1,6 +1,6 @@
 <template>
+	<Loading :active="isLoading"></Loading>
 	<div class="w-100 ms-md-9 ms-0 container">
-		<Loading :active="isLoading"></Loading>
 		<div class="w-100 py-3 px-4 rounded-2 shadow-lg bg-white mb-6">
 			<p class="text-primary fw-bold fs-lg mb-4">喜歡的貼文</p>
 			<div class="w-100 t-border d-block mb-5"></div>
@@ -97,6 +97,7 @@
 					});
 			},
 			delLikesPost(id) {
+				this.isLoading = true;
 				const token = document.cookie.split(`jwt=`).pop();
 				this.$http({
 					method: "DELETE",
@@ -107,12 +108,14 @@
 				})
 					.then((res) => {
 						if (res.data.status === "success") {
+							this.isLoading = false;
 							const index = this.likesPost.findIndex((item) => item.id === id);
 							this.likesPost.splice(index, 1);
 							this.getLikesPost();
 						}
 					})
 					.catch((err) => {
+						this.isLoading = false;
 						console.log(err);
 					});
 			},

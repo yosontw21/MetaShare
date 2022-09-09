@@ -3,7 +3,7 @@ export default {
 		return {
 			personPosts: [],
 			isLoading: false,
-		
+	
 		};
 	},
 	props: ['id'],

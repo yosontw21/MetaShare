@@ -1,12 +1,9 @@
-import postsMixin from './postsMixin';
-
 export default {
 	data() {
 		return {
 			isLoading: false
 		};
 	},
-	mixins: [postsMixin],
 	methods: {
 		delPost(id) {
 			this.isLoading = true;

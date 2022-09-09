@@ -1,4 +1,5 @@
 <template>
+	<Loading :active="isLoading"></Loading>
 	<div class="w-100 ms-md-9 ms-0">
 		<div class="d-flex justify-content-end mb-4">
 			<select
@@ -46,13 +47,14 @@
 		mixins: [profileMixin, postsMixin, createPostMixin, openModalMixin],
 		data() {
 			return {
-				isLoading: false,
 				isNew: false,
+				isLoading: false,
 			};
 		},
 		components: {
 			PostsList,
 			createPostModal,
 		},
+
 	};
 </script>

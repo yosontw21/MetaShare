@@ -1,6 +1,6 @@
 <template>
+	<Loading :active="isLoading"></Loading>
 	<div class="w-100 bg-light h-100 pb-md-10 pb-19">
-		<Loading :active="isLoading"></Loading>
 		<ProfileHeader :id="id"></ProfileHeader>
 
 		<div class="container pt-md-5 pt-10 d-flex flex-column flex-md-row">
@@ -83,12 +83,6 @@
 	import openModalMixin from "../mixins/openModalMixin";
 
 	export default {
-		data() {
-			return {
-				tempPost: {},
-				isLoading: false,
-			};
-		},
 		mixins: [profileMixin, otherProfileMixin, createPostMixin, openModalMixin],
 
 		components: {

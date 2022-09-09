@@ -1,5 +1,4 @@
 <template>
-	<Loading :active="isLoading"></Loading>
 	<Navbar></Navbar>
 
 	<div class="w-100 bg-light h-100 pb-md-10 pb-19 px-2">

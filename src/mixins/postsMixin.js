@@ -17,8 +17,8 @@ export default {
 				}
 			})
 				.then((res) => {
-					this.isLoading = false;
 					this.posts = res.data.data;
+					this.isLoading = false;
 				})
 				.catch((err) => {
 					this.isLoading = false;
@@ -29,5 +29,5 @@ export default {
 
 	created() {
 		this.getPosts();
-	}
+	},
 };
