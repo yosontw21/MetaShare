@@ -13,7 +13,7 @@ export default {
 			const token = document.cookie.split(`jwt=`).pop();
 			this.$http({
 				method: 'GET',
-				url: `${process.env.VUE_APP_API}/users//myProfile`,
+				url: `${process.env.VUE_APP_API}/users/myProfile`,
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
