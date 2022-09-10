@@ -22,6 +22,7 @@
 				</div>
 				<div class="ps-6">
 					<p class="fs-xs">追蹤中</p>
+					
 					<button type="button" class="btn-none">
 						{{ following.length }}
 					</button>
