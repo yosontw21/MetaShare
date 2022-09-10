@@ -33,14 +33,14 @@
 							class="post-edit rounded-2"
 							href="#"
 							role="button"
-							id="item.id"
+							id="post.id"
 							data-bs-toggle="dropdown"
 							aria-expanded="false"
 						>
 							<span class="material-icons"> more_horiz </span>
 						</a>
 
-						<ul class="dropdown-menu" aria-labelledby="item.id">
+						<ul class="dropdown-menu" aria-labelledby="post.id">
 							<li>
 								<button
 									type="button"
@@ -75,14 +75,46 @@
 					/>
 				</div>
 			</div>
-
+			<div
+				class="
+					border-bottom
+					pb-2
+					mb-3
+					d-flex
+					align-items-center
+					justify-content-center
+				"
+			>
+				<button
+					type="button"
+					class="
+						border-0
+						bg-white
+						w-100
+						d-flex
+						justify-content-center
+						align-items-center
+					"
+					@click="likesPost(post)"
+				>
+					<div
+						class="d-flex align-items-center"
+						v-if="post.likes.find((item) => item._id === this.profile._id)"
+					>
+						<span class="material-icons fs-4xl me-2" style="color: #de5d4b">
+							favorite
+						</span>
+						<span class="">喜歡</span>
+					</div>
+					<div class="d-flex align-items-center" style="color: #b9b9b9" v-else>
+						<span class="material-icons fs-4xl me-2"> favorite_border</span>
+						<span class="">喜歡</span>
+					</div>
+				</button>
+			</div>
 			<div class="border-bottom pb-2 mb-3 d-flex align-items-center">
 				<div class="me-2">
-					<button
-						type="button"
-						class="border-0 bg-white d-flex"
-						@click="likesPost(post)"
-					>
+					<button type="button" class="border-0 bg-white d-flex">
 						<div
 							class="fs-xs text-nowrap"
 							v-if="post.likes.length === 0"
@@ -237,6 +269,7 @@
 				status: {
 					loadingItem: "",
 				},
+				isLike: [],
 			};
 		},
 		components: {
@@ -273,8 +306,8 @@
 			},
 
 			likesPost(post) {
-				const isLike = post.likes.find((item) => item._id === this.profile._id);
-				if (isLike) {
+				this.isLike = post.likes.find((item) => item._id === this.profile._id);
+				if (this.isLike) {
 					this.delLikesPost(post);
 					return;
 				}

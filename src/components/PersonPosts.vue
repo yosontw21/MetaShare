@@ -80,14 +80,47 @@
 					/>
 				</div>
 			</div>
+			<div
+				class="
+					border-bottom
+					pb-2
+					mb-3
+					d-flex
+					align-items-center
+					justify-content-center
+				"
+			>
+				<button
+					type="button"
+					class="
+						border-0
+						bg-white
+						w-100
+						d-flex
+						justify-content-center
+						align-items-center
+					"
+					@click="likesPost(item)"
+				>
+					<div
+						class="d-flex align-items-center"
+						v-if="item.likes.find((item) => item._id === this.profile._id)"
+					>
+						<span class="material-icons fs-4xl me-2" style="color: #de5d4b">
+							favorite
+						</span>
+						<span class="">喜歡</span>
+					</div>
+					<div class="d-flex align-items-center" style="color: #b9b9b9" v-else>
+						<span class="material-icons fs-4xl me-2"> favorite_border</span>
+						<span class="">喜歡</span>
+					</div>
+				</button>
+			</div>
 			<div class="border-bottom pb-2 mb-3 d-flex">
 				<div class="me-3">
 					<div class="">
-						<button
-							type="button"
-							class="border-0 bg-white d-flex"
-							@click="likesPost(item)"
-						>
+						<button type="button" class="border-0 bg-white d-flex">
 							<div
 								class="fs-xs"
 								v-if="item.likes.length === 0"
