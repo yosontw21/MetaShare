@@ -4,11 +4,13 @@
 			class="bg-white rounded-3 shadow-lg py-8 px-7 text-center mb-3"
 			style="width: 240px"
 		>
-			<div
-				class="mb-2 m-auto rounded-3"
-				style="width: 120px; height: 120px"
-			>
-				<img :src="profile.avatar" alt="" class="rounded-3" />
+			<div class="mb-2 m-auto rounded-3" style="width: 120px; height: 120px">
+				<img
+					:src="profile.avatar"
+					alt=""
+					style="width: 120px; height: 120px"
+					class="rounded-3"
+				/>
 			</div>
 			<div class="mb-5 fs-lg fw-bold text-dark userName"></div>
 			<span class="w-100 t-border d-block mb-5"></span>
@@ -22,7 +24,7 @@
 				</div>
 				<div class="ps-6">
 					<p class="fs-xs">追蹤中</p>
-					
+
 					<button type="button" class="btn-none">
 						{{ following.length }}
 					</button>

@@ -19,6 +19,7 @@ export default {
 			let httpMethod = 'POST';
 
 			if (!this.isNew) {
+				
 				api = `${process.env.VUE_APP_API}/post/${item.id}`;
 				httpMethod = 'PATCH';
 			}

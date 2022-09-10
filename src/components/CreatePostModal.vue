@@ -12,9 +12,14 @@
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<div class="me-4" style="width: 58px; height: 58px">
-						<div class="rounded-circle">
-							<img :src="profile.avatar" alt="" class="rounded-circle" />
+					<div class="me-4">
+						<div class="rounded-circle" style="width: 58px; height: 58px">
+							<img
+								:src="profile.avatar"
+								alt=""
+								style="width: 58px; height: 58px"
+								class="rounded-circle"
+							/>
 						</div>
 					</div>
 					<h5 class="modal-title" id="createPostLabel">說點什麼呢?</h5>

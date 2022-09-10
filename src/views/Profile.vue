@@ -39,7 +39,7 @@
 						class="d-flex align-items-center rounded-2 p-3 shadow-lg bg-white"
 					>
 						<div class="rounded-circle me-3" style="height: 48px; width: 48px">
-							<img alt="" :src="profile.avatar" class="rounded-circle" />
+							<img alt="" :src="profile.avatar" style="height: 48px; width: 48px" class="rounded-circle" />
 						</div>
 
 						<button

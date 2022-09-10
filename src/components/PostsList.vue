@@ -186,7 +186,7 @@
 			<div class="d-flex align-items-center w-100">
 				<div class="me-3">
 					<div class="rounded-circle" style="height: 40px; width: 40px">
-						<img :src="profile.avatar" alt="" class="rounded-circle" />
+						<img :src="profile.avatar" style="height: 40px; width: 40px" alt="" class="rounded-circle" />
 					</div>
 				</div>
 				<div

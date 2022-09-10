@@ -62,7 +62,7 @@
 							class="me-2 userAvatar rounded-circle"
 							style="width: 40px; height: 40px"
 						>
-							<img :src="profile.avatar" alt="" class="rounded-circle" />
+							<img :src="profile.avatar" alt="" 	style="width: 40px; height: 40px" class="rounded-circle" />
 						</div>
 						<div class="userName">{{ profile.name }}</div>
 					</button>

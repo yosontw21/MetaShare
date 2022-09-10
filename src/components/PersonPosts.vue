@@ -1,4 +1,5 @@
 <template>
+	<Loading :active="isLoading"></Loading>
 	<div
 		class="
 			bg-white
@@ -24,14 +25,18 @@
 		</div>
 	</div>
 	<div class="w-100 mb-6" v-else v-for="item in personPosts" :key="item._id">
-		<Loading :active="isLoading"></Loading>
 		<div class="w-100 py-3 px-6 rounded-2 shadow-lg bg-white mb-6">
 			<div class="border-bottom pb-3 mb-2">
 				<div class="d-flex align-items-center justify-content-between">
 					<div class="d-flex align-items-center">
-						<div class="me-3" style="width: 56px; height: 56px">
-							<div class="rounded-circle">
-								<img :src="item.user.avatar" alt="" class="rounded-circle" />
+						<div class="me-3">
+							<div class="rounded-circle" style="width: 56px; height: 56px">
+								<img
+									:src="item.user.avatar"
+									style="width: 56px; height: 56px"
+									alt=""
+									class="rounded-circle"
+								/>
 							</div>
 						</div>
 						<div class="">
@@ -192,7 +197,12 @@
 			<div class="d-flex align-items-center w-100">
 				<div class="me-3">
 					<div class="rounded-circle" style="height: 40px; width: 40px">
-						<img :src="profile.avatar" alt="" class="rounded-circle" />
+						<img
+							:src="profile.avatar"
+							style="height: 40px; width: 40px"
+							alt=""
+							class="rounded-circle"
+						/>
 					</div>
 				</div>
 				<div
@@ -220,8 +230,8 @@
 							text-nowrap
 							rounded-pill
 							border-0
-							search-button
-							fs-md
+							btn btn-primary
+							fs-md fs-md-sm
 							py-lg-1
 							px-lg-10 px-2
 							py-0
