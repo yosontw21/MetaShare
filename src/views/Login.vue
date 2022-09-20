@@ -182,7 +182,9 @@
 					.then((res) => {
 						this.isLoading = false;
 						const { token, expires } = res.data.data;
-						document.cookie = `jwt=${token}; expires=${new Date(expires)}; path=/`;
+						document.cookie = `jwt=${token}; expires=${new Date(
+							expires
+						)}; path=/`;
 						if (res.data.status === "success") {
 							this.$router.push("/post");
 						}
