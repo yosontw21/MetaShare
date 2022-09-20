@@ -182,7 +182,7 @@
 					.then((res) => {
 						this.isLoading = false;
 						const { token, expires } = res.data.data;
-						document.cookie = `jwt=${token}; expires=${new Date(expires)}`;
+						document.cookie = `jwt=${token}; expires=${new Date(expires)}; path=/`;
 						if (res.data.status === "success") {
 							this.$router.push("/post");
 						}
@@ -193,25 +193,22 @@
 					});
 			},
 			thirdGoogleLogin() {
-				// location.href = `${process.env.VUE_APP_API}/auth/google`;
-				const token = document.cookie.split(`jwt=`).pop();
-				this.$http({
-					method: "GET",
-					url: `${process.env.VUE_APP_API}/auth/google`,
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-					credentials: "include",
-					withCredentials: true,
-				})
-					.then((res) => {
-						const { token, expires } = res.data.data;
-						document.cookie = `jwt=${token}; expries=${new Date(expires)}`;
-						console.log(res);
-					})
-					.catch((err) => {
-						console.log(err.response.data.message);
-					});
+				location.href = `${process.env.VUE_APP_API}/auth/google`;
+
+				// this.$http({
+				// 	method: "GET",
+				// 	url: `${process.env.VUE_APP_API}/auth/google`,
+				// 	headers: {
+				// 		Authorization: `Bearer ${token}`,
+				// 	},
+				// 	credentials: "include",
+				// })
+				// 	.then((res) => {
+				// 		console.log(res);
+				// 	})
+				// 	.catch((err) => {
+				// 		console.log(err);
+				// 	});
 			},
 		},
 

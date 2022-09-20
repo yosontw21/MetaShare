@@ -62,7 +62,12 @@
 							class="me-2 userAvatar rounded-circle"
 							style="width: 40px; height: 40px"
 						>
-							<img :src="profile.avatar" alt="" 	style="width: 40px; height: 40px" class="rounded-circle" />
+							<img
+								:src="profile.avatar"
+								alt=""
+								style="width: 40px; height: 40px"
+								class="rounded-circle"
+							/>
 						</div>
 						<div class="userName">{{ profile.name }}</div>
 					</button>
@@ -228,7 +233,8 @@
 				})
 					.then((res) => {
 						if (res.data.status === "success") {
-							document.cookie = "jwt=";
+							document.cookie = "jwt=; path=/";
+
 							this.$router.push("/login");
 						}
 					})
