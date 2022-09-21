@@ -23,8 +23,10 @@
 		},
 
 		created() {
+			let thirdToken = this.$route.query.token;
+			document.cookie = `jwt=${thirdToken}; path=/`;
 			const token = document.cookie.split(`jwt=`).pop();
-
+			this.axios.defaults.headers.common["Authorization"] = thirdToken;
 			this.$http({
 				method: "POST",
 				url: `${process.env.VUE_APP_API}/users/check`,
