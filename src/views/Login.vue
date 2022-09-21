@@ -194,6 +194,7 @@
 						alert(err.response.data.message);
 					});
 			},
+			
 			thirdGoogleLogin() {
 				location.href = `${process.env.VUE_APP_API}/auth/google`;
 
