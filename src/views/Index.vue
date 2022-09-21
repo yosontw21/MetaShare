@@ -23,28 +23,31 @@
 		},
 
 		created() {
-			let thirdToken = this.$route.query.token;
-			document.cookie = `jwt=${thirdToken}; path=/`;
 			const token = document.cookie.split(`jwt=`).pop();
-			this.axios.defaults.headers.common["Authorization"] = thirdToken;
-			this.$http({
-				method: "POST",
-				url: `${process.env.VUE_APP_API}/users/check`,
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-				.then((res) => {
-					console.log(res.data.status);
+			if (!token) {
+				let thirdToken = this.$route.query.token;
+				document.cookie = `jwt=${thirdToken}; path=/`;
+				this.axios.defaults.headers.common["Authorization"] = thirdToken;
+			} else {
+				this.$http({
+					method: "POST",
+					url: `${process.env.VUE_APP_API}/users/check`,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
 				})
-				.catch((err) => {
-					if (
-						err.response.data.message === "您尚未登入" ||
-						err.response.data.message === "invalid token"
-					) {
-						this.$router.push("/login");
-					}
-				});
+					.then((res) => {
+						console.log(res.data.status);
+					})
+					.catch((err) => {
+						if (
+							err.response.data.message === "您尚未登入" ||
+							err.response.data.message === "invalid token"
+						) {
+							this.$router.push("/login");
+						}
+					});
+			}
 		},
 	};
 </script>
