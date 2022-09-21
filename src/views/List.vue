@@ -18,7 +18,7 @@
 						</div>
 					</router-link>
 				</li>
-				
+
 				<li class="border-bottom py-3">
 					<router-link
 						to="/updateUser"
@@ -57,7 +57,7 @@
 				})
 					.then((res) => {
 						if (res.data.status === "success") {
-							document.cookie = "jwt=";
+							document.cookie = "jwt=; path=/";
 							this.$router.push("/login");
 						}
 					})
