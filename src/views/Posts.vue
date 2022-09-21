@@ -55,6 +55,5 @@
 			PostsList,
 			createPostModal,
 		},
-
 	};
 </script>
