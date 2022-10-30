@@ -8,6 +8,10 @@ export default {
 	methods: {
 		getPosts() {
 			this.isLoading = true;
+			// const filter = {
+			// 	sort: `?timeSort=${sort}`,
+			// 	search: `&q=${search}`
+			// };
 			const token = document.cookie.split(`jwt=`).pop();
 			this.$http({
 				method: 'GET',
@@ -19,6 +23,7 @@ export default {
 				.then((res) => {
 					this.posts = res.data.data;
 					this.isLoading = false;
+					console.log(this.posts);
 				})
 				.catch((err) => {
 					this.isLoading = false;
@@ -29,5 +34,5 @@ export default {
 
 	created() {
 		this.getPosts();
-	},
+	}
 };

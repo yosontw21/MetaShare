@@ -1,7 +1,7 @@
 <template>
 	<Loading :active="isLoading"></Loading>
 	<div class="w-100 ms-md-9 ms-0">
-		<div class="d-flex justify-content-end mb-4">
+		<!-- <div class="d-flex justify-content-end mb-4">
 			<select
 				class="form-select w-form-select select-filter"
 				aria-label="Default select example"
@@ -10,7 +10,7 @@
 				<option value="2">最多人喜歡</option>
 				<option value="3">最多則留言</option>
 			</select>
-		</div>
+		</div> -->
 		<div class="w-100 mb-6">
 			<div class="d-flex align-items-center rounded-2 p-3 shadow-lg bg-white">
 				<div class="rounded-circle me-3" style="height: 48px; width: 48px">

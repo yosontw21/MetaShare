@@ -15,7 +15,7 @@
 		"
 	>
 		<h1><router-link to="/post" class="bg-cover logo"></router-link></h1>
-		<div
+		<!-- <div
 			class="
 				search-box
 				d-flex
@@ -28,19 +28,19 @@
 		>
 			<input
 				type="text"
-				name=""
-				id=""
+				v-model="searchPost"
 				placeholder="搜尋文章"
 				class="search-input border border-0 fs-xs w-50"
 			/>
 			<button
 				type="button"
 				class="rounded-pill border border-light search-button fs-xs px-2"
+				@click="getPosts(filter, searchPost)"
 			>
 				搜尋
 				<span class="material-icons fs-lg ms-1"> search </span>
 			</button>
-		</div>
+		</div> -->
 		<div class="d-md-block d-none">
 			<div class="d-flex align-items-center">
 				<div class="me-4">
@@ -222,6 +222,8 @@
 		data() {
 			return {
 				link: "",
+				// searchPost: "",
+				// filter: "",
 			};
 		},
 		mixins: [profileMixin],

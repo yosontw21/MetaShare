@@ -51,7 +51,7 @@
 					<span class="fs-2xl text-secondary fw-bold fs-md-xl">SIGN UP</span>
 				</div>
 				<div class="align-items-center row mb-4">
-					<div class="col-sm-6 col-12 mb-3 mb-sm-0 px-1">
+					<div class="col-12 mb-3 mb-sm-0 px-1">
 						<button
 							type="button"
 							class="
@@ -62,6 +62,7 @@
 								w-100
 								justify-content-center
 							"
+							@click="thirdGoogleLogin"
 						>
 							<img
 								src="../../src/assets/images/google.png"
@@ -71,30 +72,8 @@
 							<p class="fw-bold text-primary">使用 Google 註冊</p>
 						</button>
 					</div>
-					<div class="col-sm-6 col-12 mb-3 mb-sm-0 px-1">
-						<button
-							type="button"
-							class="
-								btn-third
-								rounded-1
-								d-flex
-								align-items-center
-								w-100
-								justify-content-center
-							"
-						>
-							<img
-								src="../../src/assets/images/facebook.png"
-								alt=""
-								class="third-logo"
-							/>
-							<p class="fw-bold text-primary">使用 Facebook 註冊</p>
-						</button>
-					</div>
 				</div>
 				<div class="d-flex align-items-center mb-3">
-					<span class="w-100 t-border"></span>
-					<p class="fs-xs fw-bold mx-2 text-black-50">Or</p>
 					<span class="w-100 t-border"></span>
 				</div>
 				<div class="mb-sm-8 mb-6">
@@ -209,6 +188,24 @@
 						alert(err.response.data.message);
 						console.log(err.response);
 					});
+			},
+			thirdGoogleLogin() {
+				location.href = `${process.env.VUE_APP_API}/auth/google`;
+
+				// this.$http({
+				// 	method: "GET",
+				// 	url: `${process.env.VUE_APP_API}/auth/google`,
+				// 	headers: {
+				// 		Authorization: `Bearer ${token}`,
+				// 	},
+				// 	credentials: "include",
+				// })
+				// 	.then((res) => {
+				// 		console.log(res);
+				// 	})
+				// 	.catch((err) => {
+				// 		console.log(err);
+				// 	});
 			},
 		},
 	};

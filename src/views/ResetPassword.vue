@@ -65,6 +65,7 @@
 							class="form-control ps-4 py-2 fs-md w-100"
 							id="password"
 							v-model="newPassword.password"
+							@keyup.enter="resetPassword"
 						/>
 					</div>
 				</div>
@@ -79,6 +80,7 @@
 							class="form-control ps-4 py-2 fs-md w-100"
 							id="passwordConfirm"
 							v-model="newPassword.passwordConfirm"
+							@keyup.enter="resetPassword"
 						/>
 					</div>
 				</div>
@@ -87,7 +89,6 @@
 						type="button"
 						class="loginBtn w-100 btn btn-primary fs-md-lg fs-xl fw-bold"
 						@click="resetPassword"
-						@keyup.enter="resetPassword"
 					>
 						重設密碼
 					</button>
@@ -137,6 +138,7 @@
 						}
 					});
 			},
+
 		},
 	};
 </script>

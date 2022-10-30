@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<div class="w-100 ms-md-9 ms-0">
-				<div class="d-flex justify-content-end mb-4">
+				<!-- <div class="d-flex justify-content-end mb-4">
 					<select
 						class="form-select w-form-select select-filter"
 						aria-label="Default select example"
@@ -32,7 +32,7 @@
 						<option value="2">最多人喜歡</option>
 						<option value="3">最多則留言</option>
 					</select>
-				</div>
+				</div> -->
 
 				<div class="w-100 mb-6" v-if="profile._id === personProfile._id">
 					<div

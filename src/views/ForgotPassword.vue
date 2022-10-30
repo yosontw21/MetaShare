@@ -67,6 +67,7 @@
 							class="form-control ps-4 py-2 fs-md w-100"
 							v-model="email"
 							id="Email"
+							@keyup.enter="resetPassword"
 						/>
 					</div>
 				</div>
