@@ -54,10 +54,7 @@
 							<span class="material-icons fs-md-lg fs-xl"> heart_broken </span>
 							收回喜歡
 						</button>
-						<button class="btn--primary text-nowrap">
-							<span class="material-icons fs-md-lg fs-xl"> visibility </span>
-							查看貼文
-						</button>
+
 					</div>
 				</div>
 			</div>
