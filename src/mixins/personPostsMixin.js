@@ -18,6 +18,7 @@ export default {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
+				
 			})
 				.then((res) => {
 					this.isLoading = false;
