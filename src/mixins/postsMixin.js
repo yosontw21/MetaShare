@@ -23,7 +23,7 @@ export default {
 				.then((res) => {
 					this.posts = res.data.data;
 					this.isLoading = false;
-					console.log(this.posts);
+					// console.log(this.posts);
 				})
 				.catch((err) => {
 					this.isLoading = false;
