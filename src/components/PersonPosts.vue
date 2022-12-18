@@ -155,7 +155,7 @@
 					<button type="button" class="border-0 bg-white d-flex">
 						<div
 							v-if="item.comments.length === 0"
-							class="fs-xs"
+							class="fs-xs text-nowrap"
 							style="color: #b9b9b9"
 						>
 							<span class="material-icons fs-lg me-2">
@@ -164,7 +164,7 @@
 							<span class="text-nowrap">尚無留言</span>
 						</div>
 
-						<div v-else class="fs-xs">
+						<div v-else class="fs-xs text-nowrap">
 							<span class="material-icons fs-lg me-2 text-primary">
 								comment
 							</span>
@@ -183,6 +183,7 @@
 						<img
 							:src="commentsItem.userId.avatar"
 							alt=""
+							style="width: 36px; height: 36px"
 							class="rounded-circle"
 						/>
 					</div>
