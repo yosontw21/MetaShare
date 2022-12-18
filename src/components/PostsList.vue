@@ -5,6 +5,7 @@
 		:post="tempPost"
 		@create-post="createPost"
 	></createPostModal>
+
 	<div class="w-100 mb-6" v-for="(post, i) in posts" :key="post.id">
 		<div class="w-100 py-3 px-6 rounded-2 shadow-lg bg-white mb-6">
 			<div class="border-bottom pb-3 mb-2">
@@ -114,7 +115,13 @@
 			</div>
 			<div class="border-bottom pb-2 mb-3 d-flex align-items-center">
 				<div class="me-2">
-					<button type="button" class="border-0 bg-white d-flex">
+					<button
+						type="button"
+						class="border-0 bg-white d-flex"
+						data-bs-toggle="modal"
+						data-bs-target="#exampleModal"
+					
+					>
 						<div
 							class="fs-xs text-nowrap"
 							v-if="post.likes.length === 0"
@@ -240,12 +247,33 @@
 				</div>
 			</div>
 		</div>
+		<div
+			class="modal fade"
+			id="exampleModal"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
-
-
 <script>
+
 	import { day, dayToNow } from "../utils/day";
 	import profileMixin from "../mixins/profileMixin";
 	import postsMixin from "../mixins/postsMixin";
@@ -253,6 +281,7 @@
 	import createPostMixin from "../mixins/createPostMixin";
 	import openModalMixin from "../mixins/openModalMixin";
 	import delPostMixin from "../mixins/delPostMixin";
+	import LikesPostModal from "../components/LikesPostModal.vue";
 
 	export default {
 		mixins: [
@@ -264,6 +293,7 @@
 		],
 		data() {
 			return {
+
 				comments: {},
 				profile: [],
 				dayToNow,
@@ -279,7 +309,9 @@
 		},
 		components: {
 			createPostModal,
+			LikesPostModal,
 		},
+
 		methods: {
 			createComment(id) {
 				const token = document.cookie.split(`jwt=`).pop();
@@ -309,7 +341,6 @@
 						}
 					});
 			},
-
 			likesPost(post) {
 				this.isLike = post.likes.find((item) => item._id === this.profile._id);
 				if (this.isLike) {

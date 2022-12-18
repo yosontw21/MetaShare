@@ -18,16 +18,16 @@
 			<div class="d-flex justify-content-center">
 				<div class="r-border pe-6">
 					<p class="fs-xs">關注數</p>
-					<button type="button" class="btn-none">
+					<router-link to="/followers" class="btn-none">
 						{{ followers.length }}
-					</button>
+					</router-link>
 				</div>
 				<div class="ps-6">
 					<p class="fs-xs">追蹤中</p>
 
-					<button type="button" class="btn-none">
+					<router-link to="/follow" class="btn-none">
 						{{ following.length }}
-					</button>
+					</router-link>
 				</div>
 			</div>
 		</div>
@@ -53,6 +53,29 @@
 					notifications
 				</span>
 				<p class="fw-bold">追蹤名單</p>
+			</router-link>
+
+			<router-link
+				to="/followers"
+				class="
+					py-2
+					px-3
+					d-flex
+					align-items-center
+					rounded-2
+					border border-secondary
+					bg-primary-100
+					mb-3
+					h-primary-100
+				"
+			>
+				<span
+					class="material-icons p-1 fs-md rounded-circle bg-white me-4"
+					style="color: #7464b3"
+				>
+					people
+				</span>
+				<p class="fw-bold">粉絲名單</p>
 			</router-link>
 
 			<router-link

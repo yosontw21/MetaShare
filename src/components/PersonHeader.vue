@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   	<div class="container-fluid pt-20 shadow-lg rounded-bottom-xl">
 			<div
 				class="
@@ -61,4 +61,4 @@ import profileMixin from "../mixins/profileMixin";
 export default {
   mixins:[profileMixin],
 }
-</script>
+</script> -->

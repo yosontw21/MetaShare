@@ -2,8 +2,8 @@
 	<Loading :active="isLoading"></Loading>
 	<div class="w-100 ms-md-9 ms-0 container">
 		<div class="w-100 py-3 px-4 rounded-2 shadow-lg bg-white mb-6">
-			<p class="text-primary fw-bold fs-lg mb-4" >追蹤名單</p>
-			<p class="text-primary fw-bold fs-lg mb-4">已追蹤 {{followingList.length}} 人</p>
+			<p class="text-primary fw-bold fs-lg mb-4" >粉絲名單</p>
+			<p class="text-primary fw-bold fs-lg mb-4">關注數 {{followersList.length}} 人</p>
 			
 			<div class="w-100 t-border d-block mb-5"></div>
 			<div
@@ -15,13 +15,13 @@
 					justify-content-center
 					py-10
 				"
-				v-if="followingList?.length <= 0"
+				v-if="followersList?.length <= 0"
 			>
-				還沒有追蹤任何人喔
+				還沒有粉絲喔
 			</div>
 			<div
 				class="w-100 border-bottom mb-5"
-				v-for="item in followingList"
+				v-for="item in followersList"
 				:key="item.user._id"
 			>
 				<div class="d-flex align-items-center pb-5">
@@ -56,9 +56,9 @@
 					<div class="">
 						<button
 							class="btn--primary text-nowrap"
-							@click="unfollowUser(item.user._id)"
+							@click="unfollowersUser(item.user._id)"
 						>
-							取消追蹤
+							取消關注
 						</button>
 					</div>
 				</div>
@@ -72,7 +72,7 @@
 
 <script>
 	import { day, dayToNow } from "../utils/day";
-	import followingList from "../mixins/followListMixin";
+	import followersListMixin from "../mixins/followersListMixin";
 
 	export default {
 		data() {
@@ -82,14 +82,14 @@
 				isLoading: false,
 			};
 		},
-		mixins: [followingList],
+		mixins: [followersListMixin],
 		methods: {
-			unfollowUser(id) {
+			unfollowersUser(id) {
 				this.isLoading = true;
 				const token = document.cookie.split(`jwt=`).pop();
 				this.$http({
 					method: "DELETE",
-					url: `${process.env.VUE_APP_API}/users/${id}/follows`,
+					url: `${process.env.VUE_APP_API}/users/${id}/followers`,
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
@@ -97,8 +97,8 @@
 					.then((res) => {
 						if (res.data.status === "success") {
 							this.isLoading = false;
-							alert("您已取消追蹤成功");
-							this.getFollow();
+							alert("您已取消關注成功");
+							this.getFollowers();
 						}
 					})
 					.catch((err) => {

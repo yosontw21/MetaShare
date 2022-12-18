@@ -150,15 +150,6 @@
 			};
 		},
 		methods: {
-			showModal() {
-				this.createPostModal.show();
-				this.isLoading = false;
-			},
-
-			hideModal() {
-				this.createPostModal.hide();
-				this.isLoading = false;
-			},
 
 			uploadImg() {
 				this.isLoading = true;
@@ -190,6 +181,16 @@
 			delImg() {
 				this.tempPost.image = null;
 			},
+			showModal() {
+				this.createPostModal.show();
+				this.isLoading = false;
+			},
+
+			hideModal() {
+				this.createPostModal.hide();
+				this.isLoading = false;
+			},
+
 		},
 		props: {
 			post: {

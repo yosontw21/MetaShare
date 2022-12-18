@@ -11,6 +11,10 @@ const routes = [
 				component: () => import('../views/Follow.vue')
 			},
 			{
+				path: 'followers',
+				component: () => import('../views/Followers.vue')
+			},
+			{
 				path: 'likesPost',
 				component: () => import('../views/LikesPost.vue')
 			},
