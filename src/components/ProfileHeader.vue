@@ -153,7 +153,7 @@
 							justify-content-center
 							py-10
 						"
-						v-if="followingList <= 0"
+						v-if="followingList.length <= 0"
 					>
 						還沒有追蹤任何人喔
 					</div>
@@ -183,7 +183,7 @@
 							<div class="">
 								<button
 									class="btn--primary text-nowrap"
-									@click="unfollowUser(item.user._id)"
+									@click="unfollowUsers(item.user._id)"
 								>
 									取消追蹤
 								</button>
@@ -228,7 +228,7 @@
 							justify-content-center
 							py-10
 						"
-						v-if="followersList <= 0"
+						v-if="followersList.length <= 0"
 					>
 						還沒有粉絲喔
 					</div>
@@ -442,6 +442,27 @@
 							this.isLoading = false;
 							alert("您已取消關注成功");
 							this.getFollowers();
+						}
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			},
+			unfollowUsers(id) {
+				this.isLoading = true;
+				const token = document.cookie.split(`jwt=`).pop();
+				this.$http({
+					method: "DELETE",
+					url: `${process.env.VUE_APP_API}/users/${id}/follows`,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+					.then((res) => {
+						if (res.data.status === "success") {
+							this.isLoading = false;
+							alert("您已取消追蹤成功");
+							this.getFollow();
 						}
 					})
 					.catch((err) => {

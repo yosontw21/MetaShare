@@ -174,6 +174,7 @@
 			},
 
 			thirdGoogleLogin() {
+				this.isLoading = true;
 				location.href = `${process.env.VUE_APP_API}/auth/google`;
 
 				// this.$http({

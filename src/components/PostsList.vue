@@ -281,7 +281,6 @@
 	import createPostMixin from "../mixins/createPostMixin";
 	import openModalMixin from "../mixins/openModalMixin";
 	import delPostMixin from "../mixins/delPostMixin";
-	import LikesPostModal from "../components/LikesPostModal.vue";
 
 	export default {
 		mixins: [
@@ -309,7 +308,6 @@
 		},
 		components: {
 			createPostModal,
-			LikesPostModal,
 		},
 
 		methods: {

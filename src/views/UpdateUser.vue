@@ -59,9 +59,7 @@
 					style="border-radius: 0 4px 4px 0"
 					v-if="link === 'updateUser'"
 				>
-					<p class="text-primary fw-bold fs-2xl fs-md-lg mb-4">
-						編輯個人檔案
-					</p>
+					<p class="text-primary fw-bold fs-2xl fs-md-lg mb-4">編輯個人檔案</p>
 					<div class="w-100 t-border d-block mb-5"></div>
 					<div class="border-bottom mb-6 pb-8">
 						<div
@@ -106,6 +104,25 @@
 								<span class="material-icons me-1"> file_upload </span>
 								<p>上傳大頭貼</p>
 							</label>
+						</div>
+					</div>
+					<div class="border-bottom mb-6 pb-8">
+						<div class="d-md-flex align-items-md-center d-block">
+							<p class="fs-md fs-md-sm mb-md-0 mb-2" style="width: 112px">
+								Email
+								<span class=" text-danger text-nowrap fw-bold" style="font-size: 10px;">無法變更</span>
+							</p>
+							<div
+								class="d-flex align-items-center w-100"
+								style="max-width: 420px"
+							>
+								<input
+									type="text"
+									class="form-control w-100"
+									v-model="profile.email"
+									disabled
+								/>
+							</div>
 						</div>
 					</div>
 					<div class="border-bottom mb-6 pb-8">
