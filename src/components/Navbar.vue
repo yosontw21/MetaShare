@@ -195,12 +195,17 @@
 					<span class="material-icons fs-3xl"> favorite </span>
 				</div></router-link
 			>
-
+			<router-link to="/followers" active-class="is-active" class="text-dark">
+				<div class="">
+					<span class="material-icons fs-3xl"> people </span>
+				</div></router-link
+			>
 			<router-link to="/follow" active-class="is-active" class="text-dark">
 				<div class="">
 					<span class="material-icons fs-3xl"> notifications </span>
 				</div></router-link
 			>
+
 			<router-link
 				to="/list"
 				active-class="is-active"
