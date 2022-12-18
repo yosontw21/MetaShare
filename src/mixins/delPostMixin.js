@@ -19,6 +19,7 @@ export default {
 					alert('刪除成功');
 					this.isLoading = false;
 					this.getPosts();
+					this.getPersonPosts();
 				})
 				.catch((err) => {
 					console.log(err);

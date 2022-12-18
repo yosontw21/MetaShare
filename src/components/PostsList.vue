@@ -166,10 +166,11 @@
 				v-for="commentsItem in post.comments"
 				:key="commentsItem._id"
 			>
-				<div class="d-flex">
+				<div class="d-flex" >
 					<div class="rounded-circle me-3" style="width: 36px; height: 36px">
 						<img
 							:src="commentsItem.userId.avatar"
+							 style="width: 36px; height: 36px"
 							alt=""
 							class="rounded-circle"
 						/>
@@ -247,7 +248,7 @@
 				</div>
 			</div>
 		</div>
-		<div
+		<!-- <div
 			class="modal fade"
 			id="exampleModal"
 			tabindex="-1"
@@ -268,7 +269,7 @@
 					<div class="modal-body"></div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </template>
 

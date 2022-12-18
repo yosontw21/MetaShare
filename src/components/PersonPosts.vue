@@ -69,7 +69,15 @@
 								</button>
 							</li>
 
-							<li><a class="dropdown-item" href="#">刪除</a></li>
+							<li>
+								<button
+									type="button"
+									class="dropdown-item"
+									@click="delPost(item.id)"
+								>
+									刪除
+								</button>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -268,6 +276,7 @@
 	import createPostMixin from "../mixins/createPostMixin";
 	import otherProfileMixin from "../mixins/otherProfileMixin";
 	import openModalMixin from "../mixins/openModalMixin";
+	import delPostMixin from "../mixins/delPostMixin";
 
 	export default {
 		data() {
@@ -292,6 +301,7 @@
 			createPostMixin,
 			otherProfileMixin,
 			openModalMixin,
+			delPostMixin,
 		],
 		methods: {
 			createComment(id) {
@@ -364,6 +374,9 @@
 						console.log(err);
 					});
 			},
+		},
+		created() {
+			this.getPersonPosts();
 		},
 	};
 </script>
