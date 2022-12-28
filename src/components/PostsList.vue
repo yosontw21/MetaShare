@@ -119,8 +119,7 @@
 						type="button"
 						class="border-0 bg-white d-flex"
 						data-bs-toggle="modal"
-						data-bs-target="#exampleModal"
-					
+						:data-bs-target="'#likesModal' + post.id"
 					>
 						<div
 							class="fs-xs text-nowrap"
@@ -166,11 +165,11 @@
 				v-for="commentsItem in post.comments"
 				:key="commentsItem._id"
 			>
-				<div class="d-flex" >
+				<div class="d-flex">
 					<div class="rounded-circle me-3" style="width: 36px; height: 36px">
 						<img
 							:src="commentsItem.userId.avatar"
-							 style="width: 36px; height: 36px"
+							style="width: 36px; height: 36px"
 							alt=""
 							class="rounded-circle"
 						/>
@@ -248,33 +247,51 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div
+		<div
 			class="modal fade"
-			id="exampleModal"
+			:id="'likesModal' + post.id"
 			tabindex="-1"
 			aria-labelledby="exampleModalLabel"
 			aria-hidden="true"
 		>
-			<div class="modal-dialog">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+						<h1 class="modal-title fw-bold fs-lg text-primary text-center">
+							說讚的用戶
+						</h1>
 						<button
 							type="button"
 							class="btn-close"
-							data-bs-dismiss="modal"
+							data-bs-dismiss="exampleModalLabel"
 							aria-label="Close"
 						></button>
 					</div>
-					<div class="modal-body"></div>
+					<div class="px-5 py-2" v-for="likesPost in post.likes">
+						<div
+							class="d-flex align-items-center"
+						>
+							<div
+								class="rounded-circle me-3"
+								style="width: 36px; height: 36px"
+							>
+								<img
+									:src="likesPost.avatar"
+									style="width: 36px; height: 36px"
+									alt=""
+									class="rounded-circle"
+								/>
+							</div>
+							<p class="" :key="likesPost.id">{{ likesPost.name }}</p>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div> -->
+		</div>
 	</div>
 </template>
 
 <script>
-
 	import { day, dayToNow } from "../utils/day";
 	import profileMixin from "../mixins/profileMixin";
 	import postsMixin from "../mixins/postsMixin";
@@ -293,7 +310,6 @@
 		],
 		data() {
 			return {
-
 				comments: {},
 				profile: [],
 				dayToNow,
@@ -376,7 +392,7 @@
 					.catch((err) => {
 						console.log(err);
 					});
-			},
-		},
+			},}
+
 	};
 </script>

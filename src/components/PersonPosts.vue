@@ -133,7 +133,11 @@
 			<div class="border-bottom pb-2 mb-3 d-flex">
 				<div class="me-3">
 					<div class="">
-						<button type="button" class="border-0 bg-white d-flex">
+						<button type="button" 						
+						data-bs-toggle="modal"
+						:data-bs-target="'#likesModal' + item.id" 
+						class="border-0 bg-white d-flex"
+						>
 							<div
 								class="fs-xs"
 								v-if="item.likes.length === 0"
@@ -256,6 +260,47 @@
 							<span class="visually-hidden">Loading...</span>
 						</div>
 					</button>
+				</div>
+			</div>
+		</div>
+				<div
+			class="modal fade"
+			:id="'likesModal' + item.id"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fw-bold fs-lg text-primary text-center">
+							說讚的用戶
+						</h1>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="exampleModalLabel"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="px-5 py-2" v-for="likesPost in item.likes">
+						<div
+							class="d-flex align-items-center"
+						>
+							<div
+								class="rounded-circle me-3"
+								style="width: 36px; height: 36px"
+							>
+								<img
+									:src="likesPost.avatar"
+									style="width: 36px; height: 36px"
+									alt=""
+									class="rounded-circle"
+								/>
+							</div>
+							<p class="" :key="likesPost.id">{{ likesPost.name }}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

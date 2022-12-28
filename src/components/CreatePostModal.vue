@@ -175,7 +175,7 @@
 					})
 					.catch((err) => {
 						this.isLoading = false;
-						console.log(err);
+						alert(err.response.data.message);
 					});
 			},
 			delImg() {

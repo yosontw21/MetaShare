@@ -44,6 +44,7 @@
 							err.response.data.message === "您尚未登入" ||
 							err.response.data.message === "invalid token"
 						) {
+							alert(err.response.data.message);
 							this.$router.push("/login");
 						}
 					});
