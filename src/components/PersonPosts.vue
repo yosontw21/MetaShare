@@ -133,10 +133,11 @@
 			<div class="border-bottom pb-2 mb-3 d-flex">
 				<div class="me-3">
 					<div class="">
-						<button type="button" 						
-						data-bs-toggle="modal"
-						:data-bs-target="'#likesModal' + item.id" 
-						class="border-0 bg-white d-flex"
+						<button
+							type="button"
+							data-bs-toggle="modal"
+							:data-bs-target="'#likesModal' + item.id"
+							class="border-0 bg-white d-flex"
 						>
 							<div
 								class="fs-xs"
@@ -263,7 +264,7 @@
 				</div>
 			</div>
 		</div>
-				<div
+		<div
 			class="modal fade"
 			:id="'likesModal' + item.id"
 			tabindex="-1"
@@ -279,26 +280,26 @@
 						<button
 							type="button"
 							class="btn-close"
-							data-bs-dismiss="exampleModalLabel"
+							data-bs-dismiss="modal"
 							aria-label="Close"
 						></button>
 					</div>
-					<div class="px-5 py-2" v-for="likesPost in item.likes">
-						<div
-							class="d-flex align-items-center"
-						>
-							<div
-								class="rounded-circle me-3"
-								style="width: 36px; height: 36px"
-							>
-								<img
-									:src="likesPost.avatar"
+					<div class="modal-body">
+						<div class=" py-2" v-for="likesPost in item.likes">
+							<div class="d-flex align-items-center">
+								<div
+									class="rounded-circle me-3"
 									style="width: 36px; height: 36px"
-									alt=""
-									class="rounded-circle"
-								/>
+								>
+									<img
+										:src="likesPost.avatar"
+										style="width: 36px; height: 36px"
+										alt=""
+										class="rounded-circle"
+									/>
+								</div>
+								<p class="" :key="likesPost.id">{{ likesPost.name }}</p>
 							</div>
-							<p class="" :key="likesPost.id">{{ likesPost.name }}</p>
 						</div>
 					</div>
 				</div>

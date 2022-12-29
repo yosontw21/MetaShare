@@ -4,7 +4,6 @@
 		class="modal fade"
 		id="createPost"
 		tabindex="-1"
-		aria-labelledby="createPostLabel"
 		aria-hidden="true"
 		ref="createPostModal"
 	>
@@ -22,7 +21,7 @@
 							/>
 						</div>
 					</div>
-					<h5 class="modal-title" id="createPostLabel">說點什麼呢?</h5>
+					<h5 class="modal-title">說點什麼呢?</h5>
 					<button
 						type="button"
 						class="btn-close"

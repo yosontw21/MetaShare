@@ -453,7 +453,7 @@
 				const token = document.cookie.split(`jwt=`).pop();
 				this.$http({
 					method: "DELETE",
-					url: `${process.env.VUE_APP_API}/users/${id}/follows`,
+					url: `${process.env.VUE_APP_API}/users/${id}/following`,
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},

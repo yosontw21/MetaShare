@@ -263,26 +263,27 @@
 						<button
 							type="button"
 							class="btn-close"
-							data-bs-dismiss="exampleModalLabel"
+							data-bs-dismiss="modal"
 							aria-label="Close"
 						></button>
 					</div>
-					<div class="px-5 py-2" v-for="likesPost in post.likes">
-						<div
-							class="d-flex align-items-center"
-						>
-							<div
-								class="rounded-circle me-3"
-								style="width: 36px; height: 36px"
-							>
-								<img
-									:src="likesPost.avatar"
+					<div class="modal-body">
+						<div class="py-2" v-for="likesPost in post.likes">
+							<div class="d-flex align-items-center">
+								<div
+									class="rounded-circle me-3"
 									style="width: 36px; height: 36px"
-									alt=""
-									class="rounded-circle"
-								/>
+								>
+									<img
+										:src="likesPost.avatar"
+										style="width: 36px; height: 36px"
+										alt=""
+										class="rounded-circle"
+									/>
+								</div>
+
+								<p class="">{{ likesPost.name }}</p>
 							</div>
-							<p class="" :key="likesPost.id">{{ likesPost.name }}</p>
 						</div>
 					</div>
 				</div>
@@ -310,8 +311,10 @@
 		],
 		data() {
 			return {
+				isFollow: false,
 				comments: {},
 				profile: [],
+				followers: [],
 				dayToNow,
 				day,
 				tempPost: {},
@@ -326,7 +329,6 @@
 		components: {
 			createPostModal,
 		},
-
 		methods: {
 			createComment(id) {
 				const token = document.cookie.split(`jwt=`).pop();
@@ -358,6 +360,7 @@
 			},
 			likesPost(post) {
 				this.isLike = post.likes.find((item) => item._id === this.profile._id);
+				console.log(this.isFollow);
 				if (this.isLike) {
 					this.delLikesPost(post);
 					return;
@@ -392,7 +395,7 @@
 					.catch((err) => {
 						console.log(err);
 					});
-			},}
-
+			},
+		},
 	};
 </script>
